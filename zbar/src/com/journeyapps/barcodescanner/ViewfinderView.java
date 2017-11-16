@@ -16,7 +16,6 @@
 
 package com.journeyapps.barcodescanner;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -29,8 +28,6 @@ import android.view.View;
 
 import com.google.zxing.client.android.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial
@@ -54,8 +51,6 @@ public class ViewfinderView extends View {
     protected final int laserColor;
     protected final int resultPointColor;
     protected int scannerAlpha;
-//    protected List<ResultPoint> possibleResultPoints;
-//    protected List<ResultPoint> lastPossibleResultPoints;
     protected CameraPreview cameraPreview;
 
     // Cache the framingRect and previewFramingRect, so that we can still draw it after the preview
@@ -87,8 +82,6 @@ public class ViewfinderView extends View {
         attributes.recycle();
 
         scannerAlpha = 0;
-//        possibleResultPoints = new ArrayList<>(MAX_RESULT_POINTS);
-//        lastPossibleResultPoints = new ArrayList<>(MAX_RESULT_POINTS);
     }
 
     public void setCameraPreview(CameraPreview view) {
@@ -167,48 +160,7 @@ public class ViewfinderView extends View {
             final int middle = frame.height() / 2 + frame.top;
             canvas.drawRect(frame.left + 2, middle - 1, frame.right - 1, middle + 2, paint);
 
-            final float scaleX = frame.width() / (float) previewFrame.width();
-            final float scaleY = frame.height() / (float) previewFrame.height();
 
-            final int frameLeft = frame.left;
-            final int frameTop = frame.top;
-
-            // draw the last possible result points
-//            if (!lastPossibleResultPoints.isEmpty()) {
-//                paint.setAlpha(CURRENT_POINT_OPACITY / 2);
-//                paint.setColor(resultPointColor);
-//                float radius = POINT_SIZE / 2.0f;
-//                for (final ResultPoint point : lastPossibleResultPoints) {
-//                    canvas.drawCircle(
-//                            frameLeft + (int) (point.getX() * scaleX),
-//                            frameTop + (int) (point.getY() * scaleY),
-//                            radius, paint
-//                    );
-//                }
-//                lastPossibleResultPoints.clear();
-//            }
-//
-//            // draw current possible result points
-//            if (!possibleResultPoints.isEmpty()) {
-//                paint.setAlpha(CURRENT_POINT_OPACITY);
-//                paint.setColor(resultPointColor);
-//                for (final ResultPoint point : possibleResultPoints) {
-//                    canvas.drawCircle(
-//                            frameLeft + (int) (point.getX() * scaleX),
-//                            frameTop + (int) (point.getY() * scaleY),
-//                            POINT_SIZE, paint
-//                    );
-//                }
-//
-//                // swap and clear buffers
-//                final List<ResultPoint> temp = possibleResultPoints;
-//                possibleResultPoints = lastPossibleResultPoints;
-//                lastPossibleResultPoints = temp;
-//                possibleResultPoints.clear();
-//            }
-
-            // Request another update at the animation interval, but only repaint the laser line,
-            // not the entire viewfinder mask.
             postInvalidateDelayed(ANIMATION_DELAY,
                     frame.left - POINT_SIZE,
                     frame.top - POINT_SIZE,

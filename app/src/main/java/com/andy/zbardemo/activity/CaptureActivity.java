@@ -38,10 +38,6 @@ public class CaptureActivity extends Activity {
     private RelativeLayout scanCropView;
     private ImageView scanLine;
 
-//    static {
-//        System.loadLibrary("iconv");
-//    }
-
     private TranslateAnimation animation;
     private ZbarManager zbarManager;
 

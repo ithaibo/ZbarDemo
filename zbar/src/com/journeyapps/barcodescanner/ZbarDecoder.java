@@ -38,6 +38,9 @@ public class ZbarDecoder implements Decoder {
             scanner.setConfig(symbol.getType(), Config.ENABLE, 0);
         }
         scanner.setConfig(Symbol.CODE128, Config.ENABLE, 1);
+//        scanner.setConfig(Symbol.CODE39, Config.ENABLE, 1);
+//        scanner.setConfig(Symbol.CODE93, Config.ENABLE, 1);
+//        scanner.setConfig(Symbol.I25, Config.ENABLE, 1);
     }
 
     @Override
@@ -52,6 +55,9 @@ public class ZbarDecoder implements Decoder {
                 String resultStr = null;
                 SymbolSet syms = scanner.getResults();
                 for (Symbol sym : syms) {
+                    if (sym.getType()!=Symbol.CODE128 || sym.getType()!=Symbol.CODE39) {
+                        continue;
+                    }
                     resultStr = sym.getData();
                 }
                 if (!TextUtils.isEmpty(resultStr)) {

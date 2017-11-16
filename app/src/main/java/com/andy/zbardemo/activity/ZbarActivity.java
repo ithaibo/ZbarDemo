@@ -43,7 +43,7 @@ public class ZbarActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        resume(2);
+        resume(1);
     }
 
     @Override
@@ -75,12 +75,12 @@ public class ZbarActivity extends AppCompatActivity {
                 dataList.add(result.getText());
                 zbarBinding.scanList.setAdapter(new ArrayAdapter<String>(ZbarActivity.this, R.layout.item_scan, dataList));
 
-                zbarBinding.barcodeScanner.postDelayed(new Runnable() {
+                /*zbarBinding.barcodeScanner.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         resume(2);
                     }
-                }, 300);
+                }, 300);*/
             }
         }
     };
