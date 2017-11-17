@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/zbar" />
+            <option value="$PROJECT_DIR$/zbar_native" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

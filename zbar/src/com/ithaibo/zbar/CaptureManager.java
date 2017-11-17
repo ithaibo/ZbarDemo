@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -24,7 +24,6 @@ import android.view.WindowManager;
 import com.google.zxing.client.android.BeepManager;
 import com.google.zxing.client.android.InactivityTimer;
 import com.google.zxing.client.android.Intents;
-import com.google.zxing.client.android.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

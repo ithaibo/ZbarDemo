@@ -16,8 +16,21 @@ allprojects {
     repositories {
         jcenter()
     }
+//    ext {
+//        compileSdkVersion =26
+//        buildToolsVersion = '26.0.2'
+//        minSdkVersion = 14
+//        targetSdkVersion = 22
+//    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    compileSdkVersion =26
+    buildToolsVersion = '26.0.2'
+    minSdkVersion = 14
+    targetSdkVersion = 22
 }

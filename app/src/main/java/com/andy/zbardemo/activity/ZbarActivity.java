@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 import com.andy.zbardemo.R;
 import com.andy.zbardemo.databinding.ActZbarBinding;
 import com.andy.zbardemo.utils.SoundUtils;
-import com.journeyapps.barcodescanner.BarcodeCallback;
-import com.journeyapps.barcodescanner.BarcodeResult;
+import com.ithaibo.zbar.BarcodeCallback;
+import com.ithaibo.zbar.BarcodeResult;
 
 import java.util.ArrayList;
 import java.util.List;

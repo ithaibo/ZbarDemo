@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;

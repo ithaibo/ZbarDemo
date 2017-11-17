@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import com.google.zxing.client.android.DecodeFormatManager;
 import com.google.zxing.client.android.DecodeHintManager;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.client.android.R;
-import com.journeyapps.barcodescanner.camera.CameraSettings;
+import com.ithaibo.zbar.camera.CameraSettings;
 
 import java.util.Map;
 import java.util.Set;

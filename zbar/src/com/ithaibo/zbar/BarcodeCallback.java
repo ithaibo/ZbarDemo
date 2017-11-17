@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 /**
  * Callback that is notified when a barcode is scanned.

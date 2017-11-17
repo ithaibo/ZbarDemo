@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.content.Context;
 import android.os.Handler;

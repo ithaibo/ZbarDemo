@@ -1,6 +1,6 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
-import com.journeyapps.barcodescanner.Size;
+import com.ithaibo.zbar.Size;
 
 import org.junit.Test;
 

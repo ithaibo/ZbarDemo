@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -26,8 +26,8 @@ import android.view.SurfaceHolder;
 import com.google.zxing.client.android.AmbientLightManager;
 import com.google.zxing.client.android.camera.CameraConfigurationUtils;
 import com.google.zxing.client.android.camera.open.OpenCameraInterface;
-import com.journeyapps.barcodescanner.Size;
-import com.journeyapps.barcodescanner.SourceData;
+import com.ithaibo.zbar.Size;
+import com.ithaibo.zbar.SourceData;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
 import android.graphics.Rect;
 
-import com.journeyapps.barcodescanner.Size;
+import com.ithaibo.zbar.Size;
 
 import java.util.List;
 

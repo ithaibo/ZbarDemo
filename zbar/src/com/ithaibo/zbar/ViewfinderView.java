@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.content.Context;
 import android.content.res.Resources;

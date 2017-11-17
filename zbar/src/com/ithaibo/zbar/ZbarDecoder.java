@@ -1,17 +1,22 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.andy.zbar.Config;
+import com.andy.zbar.Image;
+import com.andy.zbar.ImageScanner;
+import com.andy.zbar.Symbol;
+import com.andy.zbar.SymbolSet;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.Result;
 
-import net.sourceforge.zbar.Config;
-import net.sourceforge.zbar.Image;
-import net.sourceforge.zbar.ImageScanner;
-import net.sourceforge.zbar.Symbol;
-import net.sourceforge.zbar.SymbolSet;
+//import net.sourceforge.zbar.Config;
+//import net.sourceforge.zbar.Image;
+//import net.sourceforge.zbar.ImageScanner;
+//import net.sourceforge.zbar.Symbol;
+//import net.sourceforge.zbar.SymbolSet;
 
 /**
  * Created by Andy on 2017/11/15.
@@ -55,9 +60,9 @@ public class ZbarDecoder implements Decoder {
                 String resultStr = null;
                 SymbolSet syms = scanner.getResults();
                 for (Symbol sym : syms) {
-                    if (sym.getType()!=Symbol.CODE128 || sym.getType()!=Symbol.CODE39) {
-                        continue;
-                    }
+//                    if (sym.getType()!=Symbol.CODE128 && sym.getType()!=Symbol.CODE39) {
+//                        continue;
+//                    }
                     resultStr = sym.getData();
                 }
                 if (!TextUtils.isEmpty(resultStr)) {

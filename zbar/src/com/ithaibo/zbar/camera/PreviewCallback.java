@@ -1,6 +1,6 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
-import com.journeyapps.barcodescanner.SourceData;
+import com.ithaibo.zbar.SourceData;
 
 /**
  * Callback for camera previews.

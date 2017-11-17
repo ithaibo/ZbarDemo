@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.util.Log;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.R;
-import com.journeyapps.barcodescanner.camera.CameraInstance;
-import com.journeyapps.barcodescanner.camera.PreviewCallback;
+import com.ithaibo.zbar.camera.CameraInstance;
+import com.ithaibo.zbar.camera.PreviewCallback;
 
 
 /**

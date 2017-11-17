@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.google.zxing.client.android.R;
-import com.journeyapps.barcodescanner.Size;
-import com.journeyapps.barcodescanner.Util;
+import com.ithaibo.zbar.Size;
+import com.ithaibo.zbar.Util;
 
 /**
  * Manage a camera instance using a background thread.

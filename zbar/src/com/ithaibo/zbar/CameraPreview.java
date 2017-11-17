@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner;
+package com.ithaibo.zbar;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -22,14 +22,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.google.zxing.client.android.R;
-import com.journeyapps.barcodescanner.camera.CameraInstance;
-import com.journeyapps.barcodescanner.camera.CameraSettings;
-import com.journeyapps.barcodescanner.camera.CameraSurface;
-import com.journeyapps.barcodescanner.camera.CenterCropStrategy;
-import com.journeyapps.barcodescanner.camera.FitCenterStrategy;
-import com.journeyapps.barcodescanner.camera.DisplayConfiguration;
-import com.journeyapps.barcodescanner.camera.FitXYStrategy;
-import com.journeyapps.barcodescanner.camera.PreviewScalingStrategy;
+import com.ithaibo.zbar.camera.CameraInstance;
+import com.ithaibo.zbar.camera.CameraSettings;
+import com.ithaibo.zbar.camera.CameraSurface;
+import com.ithaibo.zbar.camera.CenterCropStrategy;
+import com.ithaibo.zbar.camera.FitCenterStrategy;
+import com.ithaibo.zbar.camera.DisplayConfiguration;
+import com.ithaibo.zbar.camera.FitXYStrategy;
+import com.ithaibo.zbar.camera.PreviewScalingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

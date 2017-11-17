@@ -1,9 +1,9 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
 import android.graphics.Rect;
 import android.util.Log;
 
-import com.journeyapps.barcodescanner.Size;
+import com.ithaibo.zbar.Size;
 
 /**
  * Scales the dimensions so that it fits entirely inside the parent.One of width or height will

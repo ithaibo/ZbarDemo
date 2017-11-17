@@ -1,4 +1,4 @@
-package com.journeyapps.barcodescanner.camera;
+package com.ithaibo.zbar.camera;
 
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
