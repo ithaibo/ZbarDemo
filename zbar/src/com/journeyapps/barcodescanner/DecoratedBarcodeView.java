@@ -69,39 +69,39 @@ public class DecoratedBarcodeView extends FrameLayout {
      */
     private void initialize(AttributeSet attrs) {
         // Get attributes set on view
-        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_view);
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zbar_view);
 
         int scannerLayout = attributes.getResourceId(
-                R.styleable.zxing_view_zxing_scanner_layout, R.layout.zxing_barcode_scanner);
+                R.styleable.zbar_view_zbar_scanner_layout, R.layout.zbar_barcode_scanner);
 
         attributes.recycle();
 
         inflate(getContext(), scannerLayout, this);
 
-        barcodeView = (BarcodeView) findViewById(R.id.zxing_barcode_surface);
+        barcodeView = (BarcodeView) findViewById(R.id.zbar_barcode_surface);
 
         if (barcodeView == null) {
             throw new IllegalArgumentException(
                 "There is no a com.journeyapps.barcodescanner.BarcodeView on provided layout " +
-                "with the id \"zxing_barcode_surface\".");
+                "with the id \"zbar_barcode_surface\".");
         }
 
         // Pass on any preview-related attributes
         barcodeView.initializeAttributes(attrs);
 
 
-        viewFinder = (ViewfinderView) findViewById(R.id.zxing_viewfinder_view);
+        viewFinder = (ViewfinderView) findViewById(R.id.zbar_viewfinder_view);
 
         if (viewFinder == null) {
             throw new IllegalArgumentException(
                 "There is no a com.journeyapps.barcodescanner.ViewfinderView on provided layout " +
-                "with the id \"zxing_viewfinder_view\".");
+                "with the id \"zbar_viewfinder_view\".");
         }
 
         viewFinder.setCameraPreview(barcodeView);
 
         // statusView is optional
-        statusView = (TextView) findViewById(R.id.zxing_status_view);
+        statusView = (TextView) findViewById(R.id.zbar_status_view);
     }
 
     /**
@@ -173,7 +173,7 @@ public class DecoratedBarcodeView extends FrameLayout {
     }
 
     public BarcodeView getBarcodeView() {
-        return (BarcodeView) findViewById(R.id.zxing_barcode_surface);
+        return (BarcodeView) findViewById(R.id.zbar_barcode_surface);
     }
 
     public ViewfinderView getViewFinder() {

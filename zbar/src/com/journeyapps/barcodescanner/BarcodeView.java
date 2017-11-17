@@ -38,7 +38,7 @@ public class BarcodeView extends CameraPreview {
     private final Handler.Callback resultCallback = new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            if (message.what == R.id.zxing_decode_succeeded) {
+            if (message.what == R.id.zbar_decode_succeeded) {
                 BarcodeResult result = (BarcodeResult) message.obj;
 
                 if (result != null) {
@@ -50,7 +50,7 @@ public class BarcodeView extends CameraPreview {
                     }
                 }
                 return true;
-            } else if (message.what == R.id.zxing_decode_failed) {
+            } else if (message.what == R.id.zbar_decode_failed) {
                 // Failed. Next preview is automatically tried.
                 return true;
             }

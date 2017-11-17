@@ -11,7 +11,7 @@ dependencies {
 }
 
 android {
-    resourcePrefix 'zxing_'
+    resourcePrefix 'zbar_'
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
 

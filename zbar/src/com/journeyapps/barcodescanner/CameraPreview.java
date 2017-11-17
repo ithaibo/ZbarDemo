@@ -195,10 +195,10 @@ public class CameraPreview extends ViewGroup {
     private final Handler.Callback stateCallback = new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            if (message.what == R.id.zxing_prewiew_size_ready) {
+            if (message.what == R.id.zbar_prewiew_size_ready) {
                 previewSized((Size) message.obj);
                 return true;
-            } else if (message.what == R.id.zxing_camera_error) {
+            } else if (message.what == R.id.zbar_camera_error) {
                 Exception error = (Exception) message.obj;
 
                 if (isActive()) {
@@ -206,7 +206,7 @@ public class CameraPreview extends ViewGroup {
                     pause();
                     fireState.cameraError(error);
                 }
-            } else if(message.what == R.id.zxing_camera_closed) {
+            } else if(message.what == R.id.zbar_camera_closed) {
                 fireState.cameraClosed();
             }
             return false;
@@ -269,19 +269,19 @@ public class CameraPreview extends ViewGroup {
      * @param attrs the attributes
      */
     protected void initializeAttributes(AttributeSet attrs) {
-        TypedArray styledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_camera_preview);
+        TypedArray styledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.zbar_camera_preview);
 
-        int framingRectWidth = (int) styledAttributes.getDimension(R.styleable.zxing_camera_preview_zxing_framing_rect_width, -1);
-        int framingRectHeight = (int) styledAttributes.getDimension(R.styleable.zxing_camera_preview_zxing_framing_rect_height, -1);
+        int framingRectWidth = (int) styledAttributes.getDimension(R.styleable.zbar_camera_preview_zbar_framing_rect_width, -1);
+        int framingRectHeight = (int) styledAttributes.getDimension(R.styleable.zbar_camera_preview_zbar_framing_rect_height, -1);
 
         if (framingRectWidth > 0 && framingRectHeight > 0) {
             this.framingRectSize = new Size(framingRectWidth, framingRectHeight);
         }
 
-        this.useTextureView = styledAttributes.getBoolean(R.styleable.zxing_camera_preview_zxing_use_texture_view, true);
+        this.useTextureView = styledAttributes.getBoolean(R.styleable.zbar_camera_preview_zbar_use_texture_view, true);
 
-        // See zxing_attrs.xml for the enum values
-        int scalingStrategyNumber = styledAttributes.getInteger(R.styleable.zxing_camera_preview_zxing_preview_scaling_strategy, -1);
+        // See zbar_attrs.xml for the enum values
+        int scalingStrategyNumber = styledAttributes.getInteger(R.styleable.zbar_camera_preview_zbar_preview_scaling_strategy, -1);
         if(scalingStrategyNumber == 1) {
             previewScalingStrategy = new CenterCropStrategy();
         } else if(scalingStrategyNumber == 2) {
@@ -635,7 +635,7 @@ public class CameraPreview extends ViewGroup {
             cameraInstance = null;
             previewActive = false;
         } else {
-            stateHandler.sendEmptyMessage(R.id.zxing_camera_closed);
+            stateHandler.sendEmptyMessage(R.id.zbar_camera_closed);
         }
         if (currentSurfaceSize == null && surfaceView != null) {
             SurfaceHolder surfaceHolder = surfaceView.getHolder();

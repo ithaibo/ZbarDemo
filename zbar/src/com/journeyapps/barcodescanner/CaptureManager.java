@@ -303,30 +303,6 @@ public class CaptureManager {
         if (rawBytes != null && rawBytes.length > 0) {
             intent.putExtra(Intents.Scan.RESULT_BYTES, rawBytes);
         }
-//        Map<ResultMetadataType, ?> metadata = rawResult.getResultMetadata();
-//        if (metadata != null) {
-//            if (metadata.containsKey(ResultMetadataType.UPC_EAN_EXTENSION)) {
-//                intent.putExtra(Intents.Scan.RESULT_UPC_EAN_EXTENSION,
-//                        metadata.get(ResultMetadataType.UPC_EAN_EXTENSION).toString());
-//            }
-//            Number orientation = (Number) metadata.get(ResultMetadataType.ORIENTATION);
-//            if (orientation != null) {
-//                intent.putExtra(Intents.Scan.RESULT_ORIENTATION, orientation.intValue());
-//            }
-//            String ecLevel = (String) metadata.get(ResultMetadataType.ERROR_CORRECTION_LEVEL);
-//            if (ecLevel != null) {
-//                intent.putExtra(Intents.Scan.RESULT_ERROR_CORRECTION_LEVEL, ecLevel);
-//            }
-//            @SuppressWarnings("unchecked")
-//            Iterable<byte[]> byteSegments = (Iterable<byte[]>) metadata.get(ResultMetadataType.BYTE_SEGMENTS);
-//            if (byteSegments != null) {
-//                int i = 0;
-//                for (byte[] byteSegment : byteSegments) {
-//                    intent.putExtra(Intents.Scan.RESULT_BYTE_SEGMENTS_PREFIX + i, byteSegment);
-//                    i++;
-//                }
-//            }
-//        }
         if (barcodeImagePath != null) {
             intent.putExtra(Intents.Scan.RESULT_BARCODE_IMAGE_PATH, barcodeImagePath);
         }
@@ -390,9 +366,9 @@ public class CaptureManager {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(activity.getString(R.string.zxing_app_name));
-        builder.setMessage(activity.getString(R.string.zxing_msg_camera_framework_bug));
-        builder.setPositiveButton(R.string.zxing_button_ok, new DialogInterface.OnClickListener() {
+        builder.setTitle("条码扫描器");
+        builder.setMessage("抱歉，Android相机出现问题。您可能需要重启设备。");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();

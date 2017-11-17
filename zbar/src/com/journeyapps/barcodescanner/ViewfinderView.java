@@ -68,16 +68,16 @@ public class ViewfinderView extends View {
         Resources resources = getResources();
 
         // Get setted attributes on view
-        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_finder);
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zbar_finder);
 
-        this.maskColor = attributes.getColor(R.styleable.zxing_finder_zxing_viewfinder_mask,
-                resources.getColor(R.color.zxing_viewfinder_mask));
-        this.resultColor = attributes.getColor(R.styleable.zxing_finder_zxing_result_view,
-                resources.getColor(R.color.zxing_result_view));
-        this.laserColor = attributes.getColor(R.styleable.zxing_finder_zxing_viewfinder_laser,
-                resources.getColor(R.color.zxing_viewfinder_laser));
-        this.resultPointColor = attributes.getColor(R.styleable.zxing_finder_zxing_possible_result_points,
-                resources.getColor(R.color.zxing_possible_result_points));
+        this.maskColor = attributes.getColor(R.styleable.zbar_finder_zbar_viewfinder_mask,
+                resources.getColor(R.color.zbar_viewfinder_mask));
+        this.resultColor = attributes.getColor(R.styleable.zbar_finder_zbar_result_view,
+                resources.getColor(R.color.zbar_result_view));
+        this.laserColor = attributes.getColor(R.styleable.zbar_finder_zbar_viewfinder_laser,
+                resources.getColor(R.color.zbar_viewfinder_laser));
+        this.resultPointColor = attributes.getColor(R.styleable.zbar_finder_zbar_possible_result_points,
+                resources.getColor(R.color.zbar_possible_result_points));
 
         attributes.recycle();
 

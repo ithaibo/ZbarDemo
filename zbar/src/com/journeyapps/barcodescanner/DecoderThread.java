@@ -32,9 +32,9 @@ public class DecoderThread {
     private final Handler.Callback callback = new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            if (message.what == R.id.zxing_decode) {
+            if (message.what == R.id.zbar_decode) {
                 decode((SourceData) message.obj);
-            } else if(message.what == R.id.zxing_preview_failed) {
+            } else if(message.what == R.id.zbar_preview_failed) {
                 // Error already logged. Try again.
                 requestNextPreview();
             }
@@ -106,7 +106,7 @@ public class DecoderThread {
             synchronized (LOCK) {
                 if (running) {
                     // Post to our thread.
-                    handler.obtainMessage(R.id.zxing_decode, sourceData).sendToTarget();
+                    handler.obtainMessage(R.id.zbar_decode, sourceData).sendToTarget();
                 }
             }
         }
@@ -116,7 +116,7 @@ public class DecoderThread {
             synchronized (LOCK) {
                 if (running) {
                     // Post to our thread.
-                    handler.obtainMessage(R.id.zxing_preview_failed).sendToTarget();
+                    handler.obtainMessage(R.id.zbar_preview_failed).sendToTarget();
                 }
             }
         }
@@ -153,14 +153,14 @@ public class DecoderThread {
             Log.d(TAG, "Found barcode in " + (end - start) + " ms");
             if (resultHandler != null) {
                 BarcodeResult barcodeResult = new BarcodeResult(rawResult, sourceData);
-                Message message = Message.obtain(resultHandler, R.id.zxing_decode_succeeded, barcodeResult);
+                Message message = Message.obtain(resultHandler, R.id.zbar_decode_succeeded, barcodeResult);
                 Bundle bundle = new Bundle();
                 message.setData(bundle);
                 message.sendToTarget();
             }
         } else {
             if (resultHandler != null) {
-                Message message = Message.obtain(resultHandler, R.id.zxing_decode_failed);
+                Message message = Message.obtain(resultHandler, R.id.zbar_decode_failed);
                 message.sendToTarget();
             }
         }

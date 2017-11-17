@@ -202,7 +202,7 @@ public class CameraInstance {
                 Log.d(TAG, "Configuring camera");
                 cameraManager.configure();
                 if (readyHandler != null) {
-                    readyHandler.obtainMessage(R.id.zxing_prewiew_size_ready, getPreviewSize()).sendToTarget();
+                    readyHandler.obtainMessage(R.id.zbar_prewiew_size_ready, getPreviewSize()).sendToTarget();
                 }
             } catch (Exception e) {
                 notifyError(e);
@@ -238,7 +238,7 @@ public class CameraInstance {
 
             cameraClosed = true;
 
-            readyHandler.sendEmptyMessage(R.id.zxing_camera_closed);
+            readyHandler.sendEmptyMessage(R.id.zbar_camera_closed);
 
             cameraThread.decrementInstances();
         }
@@ -246,7 +246,7 @@ public class CameraInstance {
 
     private void notifyError(Exception error) {
         if (readyHandler != null) {
-            readyHandler.obtainMessage(R.id.zxing_camera_error, error).sendToTarget();
+            readyHandler.obtainMessage(R.id.zbar_camera_error, error).sendToTarget();
         }
     }
 
