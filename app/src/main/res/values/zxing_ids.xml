@@ -24,4 +24,5 @@
   <item type="id" name="zxing_prewiew_size_ready"/>
   <item type="id" name="zxing_camera_error"/>
   <item type="id" name="zxing_camera_closed"/>
+
 </resources>

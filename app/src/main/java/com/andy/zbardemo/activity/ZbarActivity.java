@@ -2,6 +2,7 @@ package com.andy.zbardemo.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import com.andy.zbardemo.utils.SoundUtils;
 import com.ithaibo.zbar.BarcodeCallback;
 import com.ithaibo.zbar.BarcodeResult;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,8 @@ import java.util.List;
 public class ZbarActivity extends AppCompatActivity {
     ActZbarBinding zbarBinding;
     private List<String> dataList;
+    private ArrayAdapter<String> adapter;
+    private MyBarCodeScanCallback callback;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class ZbarActivity extends AppCompatActivity {
             }
         });
         dataList = new ArrayList<>();
+        adapter = new ArrayAdapter<>(ZbarActivity.this, R.layout.item_scan, dataList);
+        zbarBinding.scanList.setAdapter(adapter);
     }
 
     @Override
@@ -57,31 +63,37 @@ public class ZbarActivity extends AppCompatActivity {
     }
 
     private void resume(int type) {
+        if (null == callback) {
+            callback = new MyBarCodeScanCallback(ZbarActivity.this);
+        }
         zbarBinding.barcodeScanner.resume();
         if (type == 1) {
-            zbarBinding.barcodeScanner.decodeSingle(barcodeCallback);
+            zbarBinding.barcodeScanner.decodeSingle(callback);
         } else {
-            zbarBinding.barcodeScanner.getBarcodeView().decodeContinuous(barcodeCallback);
+            zbarBinding.barcodeScanner.getBarcodeView().decodeContinuous(callback);
         }
     }
 
-    private BarcodeCallback barcodeCallback = new BarcodeCallback() {
+    private static class MyBarCodeScanCallback implements BarcodeCallback {
+        WeakReference<ZbarActivity> ref;
+        MyBarCodeScanCallback(@NonNull ZbarActivity activity) {
+            ref = new WeakReference<>(activity);
+        }
         @Override
         public void barcodeResult(BarcodeResult result) {
-            pause();
+            ZbarActivity activity = ref.get();
+            if (null == activity) return;
 
+            activity.pause();
             if (result != null && !TextUtils.isEmpty(result.getText())) {
                 SoundUtils.getInstance().playSuccess();
-                dataList.add(result.getText());
-                zbarBinding.scanList.setAdapter(new ArrayAdapter<String>(ZbarActivity.this, R.layout.item_scan, dataList));
-
-                /*zbarBinding.barcodeScanner.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        resume(2);
-                    }
-                }, 300);*/
+                activity.dataList.add(result.getText());
+                activity.refreshDataList();
             }
         }
-    };
+    }
+
+    private void refreshDataList() {
+        adapter.notifyDataSetChanged();
+    }
 }

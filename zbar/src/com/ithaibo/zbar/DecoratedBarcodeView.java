@@ -3,6 +3,7 @@ package com.ithaibo.zbar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.support.annotation.IdRes;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
@@ -33,6 +34,13 @@ public class DecoratedBarcodeView extends FrameLayout {
      * The instance of @link TorchListener to send events callback.
      */
     private TorchListener torchListener;
+    @IdRes
+    private int idViewBarCode;
+    @IdRes
+    private int idViewFind;
+    @IdRes
+    private int idViewStatus;
+    private AttributeSet attrs;
 
     private class WrappedCallback implements BarcodeCallback {
         private BarcodeCallback delegate;
@@ -68,40 +76,69 @@ public class DecoratedBarcodeView extends FrameLayout {
      * @param attrs The attributes to use on view.
      */
     private void initialize(AttributeSet attrs) {
-        // Get attributes set on view
-        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zbar_view);
+        this.attrs = attrs;
 
-        int scannerLayout = attributes.getResourceId(
-                R.styleable.zbar_view_zbar_scanner_layout, R.layout.zbar_barcode_scanner);
+        // Get attributes set on view
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zbar_decorated_bar_code_view);
+
+        idViewBarCode = attributes.getResourceId(
+                R.styleable.zbar_decorated_bar_code_view_zbar_id_barcodeview,
+                0);
+        idViewFind = attributes.getResourceId(
+                R.styleable.zbar_decorated_bar_code_view_zbar_id_viewfind,
+                0);
+        idViewStatus = attributes.getResourceId(
+                R.styleable.zbar_decorated_bar_code_view_zbar_id_viewstatus,
+                0);
 
         attributes.recycle();
+//        inflate(getContext(), scannerLayout, this);
 
-        inflate(getContext(), scannerLayout, this);
-
-        barcodeView = (BarcodeView) findViewById(R.id.zbar_barcode_surface);
-
-        if (barcodeView == null) {
-            throw new IllegalArgumentException(
-                "There is no a com.journeyapps.barcodescanner.BarcodeView on provided layout " +
-                "with the id \"zbar_barcode_surface\".");
+        if (0 == idViewBarCode) {
+            throw new IllegalArgumentException("id_barcodeview is not set");
+        }
+        if (0 == idViewFind) {
+            throw new IllegalArgumentException("id_viewfind is not set");
+        }
+        if (0 == idViewStatus) {
+            throw new IllegalArgumentException("id_viewstatus is not set");
         }
 
-        // Pass on any preview-related attributes
-        barcodeView.initializeAttributes(attrs);
 
+    }
 
-        viewFinder = (ViewfinderView) findViewById(R.id.zbar_viewfinder_view);
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        findBarCodeView(attrs, idViewBarCode);
+        findViewFind(idViewFind);
+        findViewStatus(idViewStatus);
+        viewFinder.setCameraPreview(barcodeView);
+    }
 
+    private void findViewStatus(int idViewStatus) {
+        // statusView is optional
+        statusView = findViewById(idViewStatus);
+    }
+
+    private void findViewFind(int idViewFind) {
+        viewFinder = findViewById(idViewFind);
         if (viewFinder == null) {
             throw new IllegalArgumentException(
                 "There is no a com.journeyapps.barcodescanner.ViewfinderView on provided layout " +
                 "with the id \"zbar_viewfinder_view\".");
         }
+    }
 
-        viewFinder.setCameraPreview(barcodeView);
-
-        // statusView is optional
-        statusView = (TextView) findViewById(R.id.zbar_status_view);
+    private void findBarCodeView(AttributeSet attrs, int idViewBarCode) {
+        barcodeView = findViewById(idViewBarCode);
+        if (barcodeView == null) {
+            throw new IllegalArgumentException(
+                    "There is no a com.journeyapps.barcodescanner.BarcodeView on provided layout " +
+                            "with the id \"zbar_barcode_surface\".");
+        }
+        // Pass on any preview-related attributes
+        barcodeView.initializeAttributes(attrs);
     }
 
     /**
@@ -173,7 +210,7 @@ public class DecoratedBarcodeView extends FrameLayout {
     }
 
     public BarcodeView getBarcodeView() {
-        return (BarcodeView) findViewById(R.id.zbar_barcode_surface);
+        return barcodeView;
     }
 
     public ViewfinderView getViewFinder() {

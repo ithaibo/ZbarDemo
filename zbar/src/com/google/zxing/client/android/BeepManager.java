@@ -108,7 +108,7 @@ public final class BeepManager {
             }
         });
         try {
-            AssetFileDescriptor file = context.getResources().openRawResourceFd(R.raw.zbar_beep);
+            AssetFileDescriptor file = context.getResources().openRawResourceFd(R.raw.success);
             try {
                 mediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(), file.getLength());
             } finally {

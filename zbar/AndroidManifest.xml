@@ -32,6 +32,7 @@
   <uses-feature android:name="android.hardware.wifi" android:required="false"/>
 
 
-  <application></application>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <application></application>
 
 </manifest>

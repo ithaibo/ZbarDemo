@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-  <declare-styleable name="zbar_view">
+  <declare-styleable name="zbar_decorated_bar_code_view">
     <attr name="zbar_scanner_layout" format="reference"/>
+    <attr name="zbar_id_barcodeview" format="reference"/>
+    <attr name="zbar_id_viewfind" format="reference"/>
+    <attr name="zbar_id_viewstatus" format="reference"/>
   </declare-styleable>
 
   <declare-styleable name="zbar_camera_preview">
